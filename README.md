@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# 📺 YouTube Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simplified YouTube-like video streaming application built with **React.js**, **TypeScript**, **SASS**, and **React Router**. It fetches video data using the **YouTube Data API** and presents it in a clean, responsive UI — no authentication required.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🖥️ **Video Playback Page** – Watch selected videos on a dedicated watch screen.
+- 🧭 **Routing with React Router** – Smooth navigation between the home page and video details.
+- 🎨 **SASS Styling** – Clean, modular, and responsive design using SCSS.
+- 🌐 **Data Fetching** – Uses `fetch` to retrieve data directly from the YouTube API.
+- 💡 **No Authentication Required** – Open access to browse and watch content.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js + TypeScript
+- **Styling:** SASS (SCSS)
+- **Routing:** React Router DOM
+- **API:** [YouTube Data API v3](https://developers.google.com/youtube/v3)
+
+---
+
+## 🔑 YouTube API Key
+
+To use the YouTube API, you'll need an API key:
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project and enable **YouTube Data API v3**
+3. Create an API key and add it to your `.env` file:
+
+```env
+VITE_YOUTUBE_API_KEY = your_youtube_api_key
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# 📦 Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Mahmoud46/youtube-clone.git
+cd youtube-clone
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Add your `.env` file:<br/>
+   Create a `.env` in the root directory and add:
+
+```env
+VITE_YOUTUBE_API_KEY = your_youtube_api_key
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
 ```
