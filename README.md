@@ -75,8 +75,10 @@ src/
 │   └── YouTubeEndpoints.api.ts
 ├── assets/
 ├── components/        # Reusable components
+├── interfaces/
 ├── pages/             # Main pages (Home, Watch)
 ├── styles/            # SCSS modules
+├── utils/
 ├── App.tsx
 └── main.tsx
 ```
