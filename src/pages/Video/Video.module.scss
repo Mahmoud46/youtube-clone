@@ -1,0 +1,24 @@
+@use "../../styles/mixins/flex" as *;
+@use "../../styles/colors/colors" as *;
+.video {
+	padding: 24px;
+	@include flex($justify-content: space-between, $align-items: flex-start);
+	flex-wrap: wrap;
+	gap: 24px;
+	padding-left: 44px;
+	&.deactivate {
+		position: relative;
+		height: calc(100vh - 65px);
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba($color: $main-color, $alpha: 0.5);
+			top: 0;
+			left: 0;
+			z-index: 2;
+		}
+	}
+}

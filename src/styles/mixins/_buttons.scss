@@ -1,0 +1,15 @@
+@use "./flex" as *;
+@use "../colors/colors" as *;
+@mixin rawButton {
+	outline: none;
+	background: none;
+	border: none;
+	border-radius: 40px;
+	padding: 8px;
+	cursor: pointer;
+	&:hover,
+	&:focus {
+		background: $button-color;
+	}
+	@include flex;
+}

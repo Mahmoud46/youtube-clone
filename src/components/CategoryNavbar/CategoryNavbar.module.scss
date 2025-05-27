@@ -1,0 +1,65 @@
+@use "../../styles/mixins/flex" as *;
+@use "../../styles/mixins/buttons" as *;
+@use "../../styles/colors/colors" as *;
+
+.categoryNavbar {
+	overflow-x: auto;
+	position: sticky;
+	left: 72px;
+	top: 60px;
+	background: rgba($color: $main-color, $alpha: 0.5);
+	backdrop-filter: blur(15px);
+	z-index: 9;
+	padding: 10px 24px;
+	z-index: 10;
+	@include flex($justify-content: flex-start);
+	gap: 12px;
+	width: calc(100% - 72px);
+
+	&::-webkit-scrollbar {
+		height: 0;
+	}
+	@media (max-width: 790px) {
+		width: 100%;
+		left: 0;
+	}
+
+	&.small {
+		left: 250px;
+		width: calc(100% - 250px);
+		@media (max-width: 1115px) {
+			left: 72px;
+		}
+		@media (max-width: 950px) {
+			width: 100%;
+			left: 0;
+		}
+		@media (max-width: 790px) {
+			width: 100%;
+			left: 0;
+		}
+	}
+
+	button {
+		@include rawButton;
+		padding: 8px 12px;
+		border-radius: 10px;
+		color: #fff;
+		font-size: 14px;
+		background: $button-color;
+		font-weight: 500;
+		min-width: max-content;
+		&.active {
+			background: #fff;
+			color: $main-color;
+			&:hover {
+				background: #fff;
+				color: $main-color;
+			}
+		}
+		&:hover {
+			background: $button-color-bright;
+			color: #fff;
+		}
+	}
+}

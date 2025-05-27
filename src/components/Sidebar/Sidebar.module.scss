@@ -1,0 +1,109 @@
+@use "../../styles/mixins/flex" as *;
+@use "../../styles/colors/colors" as *;
+.sidebar {
+	width: max-content;
+	max-height: calc(100vh - 62px);
+	overflow-y: auto;
+	position: fixed;
+	left: 0;
+	top: 62px;
+	background: $main-color;
+	z-index: 99;
+
+	a.inactive {
+		opacity: 0.7;
+		pointer-events: none;
+	}
+
+	.minorMenu {
+		@include flex($flex-direction: column);
+		margin-left: 5px;
+		a {
+			@include flex($flex-direction: column);
+			text-decoration: none;
+			color: $main-text-color;
+			gap: 5px;
+			padding: 16px 0 14px;
+			width: 100%;
+			font-size: 10px;
+			border-radius: 10px;
+
+			&:hover {
+				background: $button-color;
+			}
+		}
+
+		@media (max-width: 790px) {
+			display: none;
+		}
+	}
+
+	.majorMenu {
+		@include flex($flex-direction: column);
+		width: 240px;
+		div {
+			padding: 0px 10px;
+			width: 100%;
+			&:first-child {
+				padding-top: 10px;
+			}
+		}
+		a {
+			text-decoration: none;
+			color: $main-text-color;
+			@include flex($justify-content: flex-start);
+			padding: 8px 12px;
+			width: 100%;
+			gap: 20px;
+			border-radius: 10px;
+			font-size: 14px;
+			&:hover {
+				background: $button-color;
+			}
+
+			&.you {
+				font-size: 16px;
+				padding: 10px 12px;
+				gap: 5px;
+			}
+
+			&.active {
+				background: $button-color;
+			}
+		}
+		hr {
+			width: 100%;
+			background: #3f3f3f;
+			margin: 12px 0;
+			height: 1px;
+			border: none;
+		}
+		h2 {
+			text-align: left;
+			font-size: 16px;
+			// line-height: 2.2rem;
+			font-weight: 500;
+			width: 100%;
+			padding: 6px 12px;
+		}
+	}
+
+	// Scrollbar
+	/* For WebKit-based browsers */
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		margin-top: 10px;
+
+		margin-bottom: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #ababab;
+		border-radius: 10px;
+	}
+}

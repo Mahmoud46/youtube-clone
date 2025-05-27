@@ -1,0 +1,28 @@
+.home {
+	margin-left: 72px;
+	padding: 24px;
+	padding-top: 30px;
+	&.small {
+		margin-left: 250px;
+		.feed {
+			.card {
+				.thum {
+					img {
+						width: 344px;
+					}
+				}
+			}
+		}
+		@media (max-width: 1115px) {
+			margin-left: 72px;
+		}
+		@media (max-width: 790px) {
+			margin-left: 0;
+			padding: 10px;
+		}
+	}
+	@media (max-width: 790px) {
+		margin-left: 0;
+		padding: 18px;
+	}
+}

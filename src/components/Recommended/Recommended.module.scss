@@ -1,0 +1,66 @@
+@use "../../styles/mixins/flex" as *;
+@use "../../styles/mixins/buttons" as *;
+
+.recommended {
+	flex: 1;
+	min-width: 320px;
+	gap: 10px;
+
+	@include flex(
+		$flex-direction: column,
+		$align-items: flex-start,
+		$justify-content: flex-start
+	);
+
+	.recommendedVideoCard {
+		@include flex($align-items: flex-start, $justify-content: flex-start);
+		width: 100%;
+		gap: 10px;
+		text-decoration: none;
+		color: #fff;
+		.thum {
+			position: relative;
+			width: 168px;
+			.videoImg {
+				border-radius: 8px;
+				width: 100%;
+			}
+			span {
+				position: absolute;
+				font-size: 12px;
+				right: 5px;
+				bottom: 8px;
+				background: rgba($color: #000000, $alpha: 0.7);
+				padding: 2px 5px;
+				border-radius: 5px;
+			}
+		}
+		.body {
+			flex: 1;
+			p {
+				font-size: 12px;
+				margin-bottom: 5px;
+				color: #aaa;
+				display: -webkit-box;
+				-webkit-line-clamp: 1; /* Number of lines to show */
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				&:first-child {
+					font-size: 14px;
+					display: -webkit-box;
+					-webkit-line-clamp: 2; /* Number of lines to show */
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					margin-bottom: 10px;
+					color: #fff;
+				}
+			}
+		}
+		button {
+			@include rawButton;
+			padding: 0;
+		}
+	}
+}

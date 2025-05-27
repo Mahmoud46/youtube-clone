@@ -1,0 +1,332 @@
+@use "../../styles/mixins/flex" as *;
+@use "../../styles/mixins/buttons" as *;
+@use "../../styles/colors/colors" as *;
+
+.playVideo {
+	flex-basis: 65%;
+	iframe {
+		height: 34.5vw;
+		aspect-ratio: 16 / 9;
+		border-radius: 10px;
+	}
+
+	@media (max-width: 1290px) {
+		flex-basis: 60.5%;
+		iframe {
+			height: 32.2vw;
+		}
+	}
+	@media (max-width: 1193px) {
+		flex-basis: 40%;
+		iframe {
+			max-height: 36.5vw;
+		}
+
+		.channelVideoInfo {
+			.right {
+				button {
+					&.download {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 1055px) {
+		flex-basis: 40%;
+		iframe {
+			max-height: 36.5vw;
+		}
+
+		.channelVideoInfo {
+			.right {
+				button {
+					&.download,
+					&.share {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 985px) {
+		flex-basis: 100%;
+		iframe {
+			width: 100%;
+			height: 50vw;
+		}
+	}
+	h2 {
+		font-size: 20px;
+		line-height: 28px;
+		margin-top: 10px;
+		font-weight: 600;
+	}
+	.channelVideoInfo {
+		@include flex($justify-content: space-between);
+		margin: 10px 0;
+		gap: 5%;
+		button {
+			color: #fff;
+			@include rawButton;
+		}
+		.left {
+			padding-bottom: 2px;
+			@include flex;
+			gap: 12px;
+			img {
+				width: 40px;
+				border-radius: 50%;
+			}
+			p {
+				@include flex($align-items: flex-start, $flex-direction: column);
+				margin-right: 40px;
+				span {
+					&:first-child {
+						cursor: pointer;
+						font-weight: 600;
+						line-height: 22px;
+
+						display: -webkit-box;
+						-webkit-line-clamp: 1; /* Number of lines to show */
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						text-overflow: ellipsis;
+
+						a {
+							color: #fff;
+							text-decoration: none;
+						}
+					}
+					&:last-child {
+						font-size: 12px;
+						color: #aaa;
+						display: -webkit-box;
+						-webkit-line-clamp: 1; /* Number of lines to show */
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+			.btns {
+				@include flex;
+				gap: 10px;
+				button {
+					@include rawButton;
+					font-size: 14px;
+					line-height: 36px;
+					border-radius: 18px;
+					padding: 0 14px;
+					font-weight: 500;
+					&.join {
+						background: $button-color;
+						&:hover {
+							background: $button-color-bright;
+						}
+					}
+					&.subscribe {
+						background: #fff;
+						color: $main-color;
+						&:hover {
+							opacity: 0.9;
+						}
+					}
+				}
+			}
+		}
+		.right {
+			@include flex($justify-content: flex-start);
+			gap: 10px;
+			button {
+				background: $button-color;
+				gap: 10px;
+				padding-left: 14px;
+				padding-right: 14px;
+				@include flex;
+				font-size: 14px;
+				&:hover {
+					background: $button-color-bright;
+				}
+				&:last-child {
+					padding: 8px;
+				}
+			}
+
+			.likeDislike {
+				@include flex;
+				button {
+					padding-left: 14px;
+					padding-right: 14px;
+					&:first-child {
+						border-top-right-radius: 0;
+						border-bottom-right-radius: 0;
+						gap: 5px;
+						img {
+							margin-right: 5px;
+						}
+					}
+					&:last-child {
+						border-top-left-radius: 0;
+						border-bottom-left-radius: 0;
+						position: relative;
+						&::before {
+							content: "";
+							position: absolute;
+							width: 2px;
+							height: 60%;
+							background: $button-color-bright;
+							left: -1px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.videoInfo {
+		margin: 10px 0;
+		padding: 12px;
+		background: $button-color;
+		border-radius: 10px;
+		font-size: 14px;
+		.body {
+			margin-top: 5px;
+			.descriptionText {
+				line-height: 20px;
+				display: -webkit-box;
+				-webkit-line-clamp: 3; /* Number of lines to show */
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				cursor: pointer;
+				&.opened {
+					line-height: 20px;
+					display: block;
+					-webkit-line-clamp: unset;
+					-webkit-box-orient: unset;
+					overflow: visible;
+					text-overflow: unset;
+					cursor: auto;
+				}
+			}
+			span {
+				cursor: pointer;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.comments {
+		@include flex($flex-direction: column, $align-items: flex-start);
+		margin-top: 20px;
+		gap: 20px;
+		width: 100%;
+
+		.header {
+			@include flex($justify-content: flex-start);
+			gap: 40px;
+			h3 {
+				font-size: 20px;
+			}
+			.sort {
+				@include flex;
+				gap: 10px;
+				cursor: pointer;
+				font-weight: 500;
+				font-size: 14px;
+			}
+		}
+
+		.addComment {
+			width: 100%;
+			gap: 20px;
+			@include flex($justify-content: flex-start, $align-items: flex-start);
+
+			img {
+				width: 40px;
+				border-radius: 50%;
+			}
+			input {
+				flex: 1;
+				background: none;
+				padding-bottom: 5px;
+				line-height: 20px;
+				outline: none;
+				border: none;
+				color: #fff;
+				font-size: 14px;
+				border-bottom: 1px solid $button-color;
+			}
+		}
+		.commentsContainer {
+			width: 100%;
+			font-size: 14px;
+			@include flex($flex-direction: column, $align-items: flex-start);
+			gap: 20px;
+			.comment {
+				@include flex($justify-content: flex-start, $align-items: flex-start);
+				gap: 20px;
+				width: 100%;
+				a {
+					color: #3da0f4;
+				}
+				.userProfile {
+					width: 40px;
+					height: 40px;
+					background: rebeccapurple;
+					border-radius: 50%;
+				}
+
+				button {
+					@include rawButton;
+				}
+				.commentBody {
+					flex: 1;
+					@include flex($flex-direction: column, $align-items: flex-start);
+					gap: 10px;
+					p {
+						&:first-child {
+							a {
+								color: #fff;
+								text-decoration: none;
+							}
+							span {
+								cursor: pointer;
+								&:first-child {
+									font-size: 13px;
+								}
+								&:last-child {
+									font-size: 12px;
+									margin-left: 5px;
+									color: #aaa;
+									&:hover {
+										color: #fff;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.reactions {
+					@include flex($justify-content: flex-start);
+					span {
+						font-size: 12px;
+						color: #aaa;
+					}
+					button {
+						padding: 5px;
+						&:last-child {
+							margin-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
