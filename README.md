@@ -75,10 +75,34 @@ src/
 │   └── YouTubeEndpoints.api.ts
 ├── assets/
 ├── components/        # Reusable components
+│   ├── CategoryNavbar/
+│   ├── Feed/
+│   ├── Navbar/
+│   ├── PlayVideo/
+│   ├── Recommended/
+│   └── Sidebar/
 ├── interfaces/
-├── pages/             # Main pages (Home, Watch)
+│   ├── YouTubeChannelListResponse.ts
+│   ├── YouTubeCommentThreadListResponse.ts
+│   ├── YouTubeVideoListResponse.interface.ts
+│   └── YouTubeVideoResponse.ts
+├── pages/             # Main pages
+│   ├── Home/
+│   └── Video/
 ├── styles/            # SCSS modules
+│   ├── colors/
+│   ├── mixins/
+│   └── App.module.scss
 ├── utils/
+│   ├── icons.utils.tsx
+│   ├── parse.tsx
+│   └── youtube.api.tsx
 ├── App.tsx
 └── main.tsx
 ```
+
+---
+
+# 🙌 Acknowledgements
+
+- Video data powered by [YouTube Data API](https://developers.google.com/youtube/)
