@@ -64,3 +64,19 @@ VITE_YOUTUBE_API_KEY = your_youtube_api_key
 ```bash
 npm run dev
 ```
+
+---
+
+# 📁 Folder Structure
+
+```bash
+src/
+├── apis/
+│   └── YouTubeEndpoints.api.ts
+├── assets/
+├── components/        # Reusable components
+├── pages/             # Main pages (Home, Watch)
+├── styles/            # SCSS modules
+├── App.tsx
+└── main.tsx
+```
