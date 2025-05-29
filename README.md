@@ -23,6 +23,10 @@ A simplified YouTube-like video streaming application built with **React.js**, *
 
 ---
 
+## 📸 Preview
+
+## <img src="src\assets\youtube_clone.gif">
+
 ## 🔑 YouTube API Key
 
 To use the YouTube API, you'll need an API key:
