@@ -17,9 +17,11 @@ import {
 import moment from "moment";
 import { YouTubeCommentThreadListResponse } from "../../interfaces/YouTubeCommentThreadListResponse";
 import parse from "html-react-parser";
+import RecommendedVideos from "../Recommended/Recommended";
 
 type PlayVideoParams = {
 	videoId: string;
+	categoryId: number;
 };
 
 type ChannelVideoInfoParams = {
@@ -113,10 +115,12 @@ function ChannelVideoInfo(channel: ChannelVideoInfoParams): ReactNode {
 					<img src={Icons.share} alt="" />
 					<span>Share</span>
 				</button>
-				<button className={styles.download}>
-					<img src={Icons.download} alt="" />
-					<span>Download</span>
-				</button>
+				{
+					<button className={styles.download}>
+						<img src={Icons.download} alt="" />
+						<span>Download</span>
+					</button>
+				}
 				<button>
 					<img src={Icons.more_hr} alt="" />
 				</button>
@@ -186,9 +190,9 @@ function Comment(comment: CommentParams): ReactNode {
 		}
 	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		setAvatar(comment.authorProfileImageUrl);
-	},[comment.authorProfileImageUrl])
+	}, [comment.authorProfileImageUrl]);
 	return (
 		<div className={styles.comment}>
 			<img
@@ -333,14 +337,18 @@ export default function PlayVideo(video: PlayVideoParams): ReactNode {
 		mainChannel?.items &&
 		videoData?.items && (
 			<div className={styles.playVideo}>
-				<iframe
-					src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1`}
-					title={videoData?.items[0].snippet.title}
-					frameBorder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowFullScreen
-				></iframe>
+				<div className={styles.videoContainer}>
+					<iframe
+						src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1`}
+						width={"100%"}
+						height={"100%"}
+						title={videoData?.items[0].snippet.title}
+						frameBorder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerPolicy="strict-origin-when-cross-origin"
+						allowFullScreen
+					></iframe>
+				</div>
 				<h2>{videoData?.items[0].snippet.title}</h2>
 				<ChannelVideoInfo
 					avatar={
@@ -363,6 +371,12 @@ export default function PlayVideo(video: PlayVideoParams): ReactNode {
 					description={videoData?.items[0].snippet.description as string}
 					id={video.videoId}
 				/>
+				<div className={styles.mainRecommended}>
+					<RecommendedVideos
+						categoryId={video.categoryId as number}
+						videoId={video.videoId}
+					/>
+				</div>
 				<Comments
 					commentCount={(+(videoData?.items[0].statistics
 						.commentCount as string)).toLocaleString()}

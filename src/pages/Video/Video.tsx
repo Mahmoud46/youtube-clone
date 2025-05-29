@@ -17,12 +17,14 @@ export default function Video({
 	setExpandSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 }): ReactNode {
 	const { categoryId, videoId } = useParams<string>();
+
 	return (
 		<>
 			<Sidebar
 				expandSidebar={expandSidebar}
 				category={category}
 				setCategory={setCategory}
+				setExpandSidebar={setExpandSidebar}
 			/>
 			<section
 				className={`${styles.video} ${expandSidebar ? styles.deactivate : ""}`}
@@ -30,11 +32,17 @@ export default function Video({
 					if (expandSidebar) setExpandSidebar(!expandSidebar);
 				}}
 			>
-				<PlayVideo videoId={videoId as string} />
-				<RecommendedVideos
-					categoryId={+(categoryId as string) as number}
+				<PlayVideo
 					videoId={videoId as string}
+					categoryId={+(categoryId as string) as number}
 				/>
+
+				<div className={styles.mainRecommended}>
+					<RecommendedVideos
+						categoryId={+(categoryId as string) as number}
+						videoId={videoId as string}
+					/>
+				</div>
 			</section>
 		</>
 	);

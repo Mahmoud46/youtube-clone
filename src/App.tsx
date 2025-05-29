@@ -11,11 +11,14 @@ function App(): ReactNode {
 
 	// Set the expandSidebar to false when moving to a new route
 	useEffect(() => {
-		setExpandSidebar(false);
-		if (category == -1 && !locationPathname.startsWith("/video"))
+		if (category == -1 && !locationPathname.startsWith("/video")) {
+			setExpandSidebar(false);
 			setCategory(0);
-		else if (locationPathname.startsWith("/video")) setCategory(-1);
-	}, [locationPathname]);
+		} else if (locationPathname.startsWith("/video")) {
+			setCategory(-1);
+			setExpandSidebar(false);
+		}
+	}, [locationPathname, category]);
 
 	return (
 		<main>
@@ -28,6 +31,7 @@ function App(): ReactNode {
 							expandSidebar={expandSidebar}
 							category={category}
 							setCategory={setCategory}
+							setExpandSidebar={setExpandSidebar}
 						/>
 					}
 				/>

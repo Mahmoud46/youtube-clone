@@ -9,10 +9,12 @@ export default function Home({
 	expandSidebar,
 	category,
 	setCategory,
+	setExpandSidebar,
 }: {
 	expandSidebar: boolean;
 	category: number;
 	setCategory: React.Dispatch<React.SetStateAction<number>>;
+	setExpandSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 }): ReactNode {
 	return (
 		<>
@@ -20,6 +22,7 @@ export default function Home({
 				expandSidebar={expandSidebar}
 				category={category}
 				setCategory={setCategory}
+				setExpandSidebar={setExpandSidebar}
 			/>
 			<CategoryNavbar
 				expandSidebar={expandSidebar}

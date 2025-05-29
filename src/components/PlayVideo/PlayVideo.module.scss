@@ -3,71 +3,60 @@
 @use "../../styles/colors/colors" as *;
 
 .playVideo {
-	flex-basis: 65%;
-	iframe {
-		height: 34.5vw;
+	flex: 1;
+
+	@media (max-width: 1025px) {
+		width: 100%;
+	}
+	.videoContainer {
+		width: 853px;
 		aspect-ratio: 16 / 9;
-		border-radius: 10px;
-	}
-
-	@media (max-width: 1290px) {
-		flex-basis: 60.5%;
 		iframe {
-			height: 32.2vw;
-		}
-	}
-	@media (max-width: 1193px) {
-		flex-basis: 40%;
-		iframe {
-			max-height: 36.5vw;
+			border-radius: 10px;
 		}
 
-		.channelVideoInfo {
-			.right {
-				button {
-					&.download {
-						display: none;
-					}
-				}
-			}
-		}
-	}
-
-	@media (max-width: 1055px) {
-		flex-basis: 40%;
-		iframe {
-			max-height: 36.5vw;
+		@media (max-width: 1115px) {
+			width: 640px;
 		}
 
-		.channelVideoInfo {
-			.right {
-				button {
-					&.download,
-					&.share {
-						display: none;
-					}
-				}
-			}
-		}
-	}
+		@media (max-width: 1025px) {
+			width: 762px;
 
-	@media (max-width: 985px) {
-		flex-basis: 100%;
-		iframe {
+			margin: 0 auto;
+		}
+
+		@media (max-width: 842px) {
 			width: 100%;
-			height: 50vw;
+			margin: 0 auto;
 		}
 	}
+
 	h2 {
 		font-size: 20px;
 		line-height: 28px;
 		margin-top: 10px;
 		font-weight: 600;
+
+		display: -webkit-box;
+		-webkit-line-clamp: 2; /* Number of lines to show */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.channelVideoInfo {
 		@include flex($justify-content: space-between);
+
 		margin: 10px 0;
-		gap: 5%;
+		width: 100%;
+
+		@media (max-width: 650px) {
+			@include flex(
+				$flex-direction: column,
+				$justify-content: start,
+				$align-items: start
+			);
+			gap: 10px;
+		}
 		button {
 			color: #fff;
 			@include rawButton;
@@ -133,13 +122,14 @@
 						&:hover {
 							opacity: 0.9;
 						}
+						margin-right: 10px;
 					}
 				}
 			}
 		}
 		.right {
 			@include flex($justify-content: flex-start);
-			gap: 10px;
+			gap: 8px;
 			button {
 				background: $button-color;
 				gap: 10px;
@@ -181,6 +171,24 @@
 							left: -1px;
 						}
 					}
+				}
+			}
+
+			.download {
+				@media (max-width: 1115px) {
+					display: none;
+				}
+				@media (max-width: 1025px) {
+					@include flex;
+				}
+				@media (max-width: 900px) {
+					display: none;
+				}
+				@media (max-width: 650px) {
+					@include flex;
+				}
+				@media (max-width: 510px) {
+					display: none;
 				}
 			}
 		}
@@ -327,6 +335,15 @@
 					}
 				}
 			}
+		}
+	}
+
+	.mainRecommended {
+		margin-bottom: 20px;
+		border-bottom: 0.5px #8a8686 solid;
+		padding-bottom: 20px;
+		@media (min-width: 1025px) {
+			display: none;
 		}
 	}
 }

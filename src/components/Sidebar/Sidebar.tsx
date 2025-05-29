@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.scss";
 import Icons from "../../utils/icons.utils";
 import { useLocation, useNavigate } from "react-router-dom";
 
-type CatProm = {
+type CatProps = {
 	category: number;
 	showVideosWithCategory: (
 		e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -16,7 +16,7 @@ function MajorMenu({
 	category,
 	showVideosWithCategory,
 	deactivateLink,
-}: CatProm): ReactNode {
+}: CatProps): ReactNode {
 	return (
 		<div className={styles.majorMenu}>
 			<div>
@@ -153,7 +153,7 @@ function MinorMenu({
 	category,
 	showVideosWithCategory,
 	deactivateLink,
-}: CatProm): ReactNode {
+}: CatProps): ReactNode {
 	return (
 		<div className={styles.minorMenu}>
 			<a href="" onClick={(e) => showVideosWithCategory(e, 0)}>
@@ -183,10 +183,12 @@ export default function Sidebar({
 	expandSidebar,
 	category,
 	setCategory,
+	setExpandSidebar,
 }: {
 	expandSidebar: boolean;
 	category: number;
 	setCategory: React.Dispatch<React.SetStateAction<number>>;
+	setExpandSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 }): ReactNode {
 	const locationPathname = useLocation().pathname;
 	const navigate = useNavigate();
@@ -197,6 +199,7 @@ export default function Sidebar({
 	) => {
 		e.preventDefault();
 		setCategory(categoryId);
+		if (window.innerWidth <= 1115) setExpandSidebar(false);
 		if (locationPathname.startsWith("/video")) navigate("/");
 	};
 
