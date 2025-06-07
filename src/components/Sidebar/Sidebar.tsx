@@ -201,6 +201,19 @@ export default function Sidebar({
 		setCategory(categoryId);
 		if (window.innerWidth <= 1115) setExpandSidebar(false);
 		if (locationPathname.startsWith("/video")) navigate("/");
+
+		// Scrolling
+		window.scrollTo(0, 0);
+		// Scroll all scrollable elements
+		const scrollables = document.querySelectorAll<HTMLElement>("*");
+		scrollables.forEach((el) => {
+			const isScrollableY = el.scrollHeight > el.clientHeight;
+			const isScrollableX = el.scrollWidth > el.clientWidth;
+
+			if (isScrollableY || isScrollableX) {
+				el.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+			}
+		});
 	};
 
 	const deactivateLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>

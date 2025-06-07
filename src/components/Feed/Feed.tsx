@@ -145,6 +145,9 @@ export default function Feed({
 				Array.from({ length: 50 }, (_, i) => i).map((ele) => (
 					<VideoCardLoader key={ele} />
 				))}
+
+			<div></div>
+			<div></div>
 		</div>
 	);
 }

@@ -16,6 +16,18 @@ export default function CategoryNavbar({
 	) => {
 		e.preventDefault();
 		setCategory(categoryId);
+		// Scrolling
+		window.scrollTo(0, 0);
+		// Scroll all scrollable elements
+		const scrollables = document.querySelectorAll<HTMLElement>("*");
+		scrollables.forEach((el) => {
+			const isScrollableY = el.scrollHeight > el.clientHeight;
+			const isScrollableX = el.scrollWidth > el.clientWidth;
+
+			if (isScrollableY || isScrollableX) {
+				el.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+			}
+		});
 	};
 
 	return (
@@ -27,6 +39,24 @@ export default function CategoryNavbar({
 				onClick={(e) => showCategory(e, 0)}
 			>
 				<span>All</span>
+			</button>
+			<button
+				className={category == 10 ? styles.active : ""}
+				onClick={(e) => showCategory(e, 10)}
+			>
+				<span>Music</span>
+			</button>
+			<button
+				className={category == 20 ? styles.active : ""}
+				onClick={(e) => showCategory(e, 20)}
+			>
+				<span>Gaming</span>
+			</button>
+			<button
+				className={category == 17 ? styles.active : ""}
+				onClick={(e) => showCategory(e, 17)}
+			>
+				<span>Sports</span>
 			</button>
 			<button
 				className={category == 25 ? styles.active : ""}
