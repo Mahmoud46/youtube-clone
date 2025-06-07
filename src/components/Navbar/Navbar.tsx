@@ -1,5 +1,7 @@
 import { ReactNode, useState } from "react";
 import Icons from "../../utils/icons.utils";
+import youtube_logo from "../../assets/youtube_logo.png";
+import user_icon from "../../assets/icons/user_icon.jpg";
 
 import styles from "./Navbar.module.scss";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +31,7 @@ function NavLeft({ setExpandSidebar, setCategoryId }: NavbarParam): ReactNode {
 					naviget("/");
 				}}
 			>
-				<img src={Icons.youtube_logo} alt="" />
+				<img src={youtube_logo} alt="" />
 			</Link>
 		</div>
 	);
@@ -75,7 +77,7 @@ function NavRight(): ReactNode {
 				<i>9+</i>
 			</button>
 			<button className={styles.userIconBtn}>
-				<img src={Icons.user_icon} alt="" />
+				<img src={user_icon} alt="" />
 			</button>
 		</div>
 	);
