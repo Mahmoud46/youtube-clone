@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import "./App.module.scss";
+import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Video from "./pages/Video/Video";
