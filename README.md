@@ -27,6 +27,8 @@ A simplified YouTube-like video streaming application built with **React.js**, *
 
 ## <img src="src\assets\youtube_clone.gif">
 
+[Live demo](https://youtube-clone-three-lemon.vercel.app/)
+
 ## 🔑 YouTube API Key
 
 To use the YouTube API, you'll need an API key:
