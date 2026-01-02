@@ -45,7 +45,14 @@ VITE_YOUTUBE_API_KEY = your_youtube_api_key
 
 ---
 
-# 📦 Getting Started
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or later recommended)
+- npm or yarn
+
+### ⚙️ Installation & Setup
 
 1. Clone the repository:
 
